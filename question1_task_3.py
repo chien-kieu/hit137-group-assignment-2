@@ -1,6 +1,7 @@
 """
-TASK_1
-Extract the ‘text’ in all the CSV files and store them into a single ‘.txt file’.
+TASK_3
+Count the occurrences of the words in the text (.txt) and give the ‘Top 30’ most common words.
+And store the ‘Top 30’ common words and their counts into a CSV file.
 """
 import re
 import csv
