@@ -8,6 +8,7 @@ with open('C:/Users/musta/Downloads/all_csv_file.txt', 'r', encoding='utf-8') as
 words = text.split()
 word_counts = Counter(words)
 
+# show 30 common words
 top_30_words = word_counts.most_common(30)
 
 df_top_30 = pd.DataFrame(top_30_words, columns=['Word', 'Count'])
