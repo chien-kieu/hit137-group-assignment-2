@@ -1,10 +1,9 @@
-# Task 3
 from transformers import AutoTokenizer
 from collections import Counter
 import pandas as pd
 
-def analyze_and_save_top_30_tokens(file_path, model_name="bert-base-cased", chunk_size=1000000, top_n=30):
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
+def analyze_and_save_top_30_tokens(file_path, chunk_size=1000000, top_n=30):
+    tokenizer = AutoTokenizer.from_pretrained("bert-base-cased")
     total_token_counts = Counter()
 
     with open(file_path, 'r', encoding='utf-8') as file:
@@ -35,7 +34,7 @@ def analyze_and_save_top_30_tokens(file_path, model_name="bert-base-cased", chun
     print(f"\nTop 30 tokens have been saved to '{csv_file_name}'.")
 
 def main():
-    input_file_path = "./combined_text.txt"
+    input_file_path = "combined_text.txt"
     analyze_and_save_top_30_tokens(input_file_path)
 
 if __name__ == "__main__":
