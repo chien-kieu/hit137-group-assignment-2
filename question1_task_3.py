@@ -1,34 +1,24 @@
-"""
-TASK_3
-Count the occurrences of the words in the text (.txt) and give the ‘Top 30’ most common words.
-And store the ‘Top 30’ common words and their counts into a CSV file.
-"""
 import re
-import csv
+import pandas as pd
 from collections import Counter
 
-def count_words(file_path):
-    with open(file_path, 'r', encoding='utf-8') as file:
-        text = file.read().lower()  # Read the file and convert text to lowercase
-        words = re.findall(r'\b\w+\b', text)  # Use regular expression to extract words
+output_csv_file = 'top_30_words.csv'
 
-    word_counts = Counter(words)
-    return word_counts
+# Read content from the file
+with open('combined_text.txt', 'r', encoding='utf-8') as file:
+    text = file.read()
 
-def save_top30_to_csv(word_counts, csv_file_path):
-    with open(csv_file_path, 'w', newline='', encoding='utf-8') as csvfile:
-        csv_writer = csv.writer(csvfile)
-        csv_writer.writerow(['Word', 'Count'])
+# Use regular expression to extract words
+words = re.findall(r'\b\w+\b', text)
 
-        for word, count in word_counts.most_common(30):
-            csv_writer.writerow([word, count])
+# Count the occurrences of each word
+word_counts = Counter(words)
 
-if __name__ == "__main__":
-    # Replace 'your_file.txt' and 'output.csv' with your actual file names
-    input_file_path = '/Users/chienkieu/Desktop/CDU/SS23/HIT137/Assignment_2/combined_text.txt'
-    output_csv_path = '/Users/chienkieu/Desktop/CDU/SS23/HIT137/Assignment_2/output.csv'
+# Count the top 30 words
+top_30_words = word_counts.most_common(30)
 
-    word_counts = count_words(input_file_path)
-    save_top30_to_csv(word_counts, output_csv_path)
+# Save the top 30 words and their counts to a CSV file
+df_top_30 = pd.DataFrame(top_30_words, columns=['Word', 'Count'])
+df_top_30.to_csv(output_csv_file, index=False)
 
-    print("Top 30 words and their counts have been saved to", output_csv_path)
+print(f"The top 30 words and their counts have been saved to {output_csv_file}")
