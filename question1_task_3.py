@@ -14,8 +14,8 @@ words = re.findall(r'\b\w+\b', text)
 # Count the occurrences of each word
 word_counts = Counter(words)
 
-# Count the top 30 words
-top_30_words = word_counts.most_common(30)
+# Get the top 30 words and their counts
+top_30_words = [(word, count) for word, count in word_counts.most_common(30)]
 
 # Save the top 30 words and their counts to a CSV file
 df_top_30 = pd.DataFrame(top_30_words, columns=['Word', 'Count'])
