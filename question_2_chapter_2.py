@@ -2,7 +2,7 @@
 """
 QUESTION 2 Chapter 2
 
-Link to git: 
+Link to git: https://github.com/chien-kieu/hit137-group-assignment-2/blob/main/question_2_chapter_2.py
 """
 def separate_and_convert(input_string):
     # Separate numbers and letters
