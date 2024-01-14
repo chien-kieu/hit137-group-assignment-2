@@ -1,7 +1,7 @@
 """
 QUESTION 2 Chapter 1
 
-Link to git: 
+Link to git: https://github.com/chien-kieu/hit137-group-assignment-2/blob/main/question_2_chapter_1.py
 """
 import time
 from PIL import Image
