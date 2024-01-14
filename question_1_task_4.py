@@ -36,9 +36,9 @@ def process_text_spacy(text, nlp):
     drugs_spacy = [ent.text for ent in doc_spacy.ents if ent.label_ == 'CHEMICAL']
     return diseases_spacy, drugs_spacy
 
-def compare_entities(entity_set1, entity_set2):
-    common_entities = set(entity_set1) & set(entity_set2)
-    differences = set(entity_set1) - set(entity_set2)
+def compare_entities(entity_set1, entity_set2, top_n=30):
+    common_entities = list(set(entity_set1) & set(entity_set2))[:top_n]
+    differences = list(set(entity_set1) - set(entity_set2))[:top_n]
     return len(entity_set1), len(entity_set2), common_entities, differences
 
 # Load the spaCy model for biomedical entities
@@ -55,20 +55,23 @@ with open(csv_file_path, 'w', newline='', encoding='utf-8') as csv_file:
     csv_writer = csv.writer(csv_file)
 
     # Write header to CSV file
-    csv_writer.writerow(['Total Diseases (SpaCy)', 'Total Diseases (BioBERT)',
-                            'Common Diseases', 'Differences in Diseases',
-                            'Total Drugs (SpaCy)', 'Total Drugs (BioBERT)',
-                            'Common Drugs', 'Differences in Drugs'])
+    csv_writer.writerow(['Chunk Number',
+                        'Total Diseases (SpaCy)', 'Total Diseases (BioBERT)',
+                        'Common Diseases', 'Differences in Diseases',
+                        'Total Drugs (SpaCy)', 'Total Drugs (BioBERT)',
+                        'Common Drugs', 'Differences in Drugs'])
 
     # Read the text from the file in chunks
     chunk_size = 1000000
-    all_results = []
 
     with open(file_path, 'r', encoding='utf-8') as file:
+        chunk_number = 0
         while True:
             chunk = file.read(chunk_size)
             if not chunk:
                 break
+
+            chunk_number += 1
 
             # Process text with SpaCy
             diseases_spacy, drugs_spacy = process_text_spacy(chunk, nlp_spacy)
@@ -79,20 +82,24 @@ with open(csv_file_path, 'w', newline='', encoding='utf-8') as csv_file:
 
             # Compare entities detected by SpaCy and BioBERT
             total_diseases_spacy, total_diseases_biobert, common_diseases, diff_diseases = compare_entities(
-                diseases_spacy, diseases_biobert
+                diseases_spacy, diseases_biobert, top_n=30
             )
 
             total_drugs_spacy, total_drugs_biobert, common_drugs, diff_drugs = compare_entities(
-                drugs_spacy, drugs_biobert
+                drugs_spacy, drugs_biobert, top_n=30
             )
 
             # Save results for the current chunk
-            all_results = [total_diseases_spacy, total_diseases_biobert,
+            all_results = [chunk_number,
+                            total_diseases_spacy, total_diseases_biobert,
                             common_diseases, diff_diseases,
                             total_drugs_spacy, total_drugs_biobert,
                             common_drugs, diff_drugs]
 
-    # Write final results to CSV file
-    csv_writer.writerow(all_results)
+            # Write results to CSV file after each chunk
+            csv_writer.writerow(all_results)
+            
+            print(f"\nProcessed Chunk {chunk_number}")
 
 print(f"\nThe final comparison results have been saved to {csv_file_path}")
+
