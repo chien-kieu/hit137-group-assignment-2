@@ -1,10 +1,6 @@
 
 """
-QUESTION 3: Fixing the error-prone codes
-1. Find the key by call finding_decryption_key()
-2. Write the decryption function decrypt(encrypted_text, key)
-3. Decrypt the original code (encrypted_code.text) and save to 'decrypted_code.py' file
-4. Correct the errors and provide the comments
+QUESTION 3
 
 Link to git: 
 """
