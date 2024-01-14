@@ -1,7 +1,7 @@
 """
 QUESTION 1 Task 3_2
 
-Link to git: 
+Link to git: https://github.com/chien-kieu/hit137-group-assignment-2/blob/main/question_1_task_3_2.py
 """
 from transformers import AutoTokenizer
 from collections import Counter
