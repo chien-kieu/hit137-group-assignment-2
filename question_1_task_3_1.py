@@ -1,3 +1,8 @@
+"""
+QUESTION 1 Task 3_1
+
+Link to git: 
+"""
 import re
 import pandas as pd
 from collections import Counter
@@ -23,9 +28,6 @@ def analyze_and_save_top_30_words(file_path):
 
     print(f"The top 30 words and their counts have been saved to {output_csv_file}")
 
-def main():
-    input_file_path = 'combined_text.txt'
-    analyze_and_save_top_30_words(input_file_path)
+input_file_path = 'combined_text.txt'
+analyze_and_save_top_30_words(input_file_path)
 
-if __name__ == "__main__":
-    main()

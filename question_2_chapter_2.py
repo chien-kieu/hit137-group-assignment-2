@@ -1,19 +1,10 @@
+
+"""
+QUESTION 2 Chapter 2
+
+Link to git: 
+"""
 def separate_and_convert(input_string):
-    """
-    Separates an input string into number and letter components.
-    Converts even numbers to ASCII code decimal values and upper-case letters to ASCII code decimal values.
-
-    Parameters:
-    - input_string (str): The input string containing alphanumeric characters.
-
-    Returns:
-    - number_string (str): String containing only the numeric characters from the input.
-    - letter_string (str): String containing only the alphabetic characters from the input.
-    - even_numbers (list): List of even numeric characters extracted from the number string.
-    - ascii_values_numbers (list): List of ASCII code decimal values corresponding to even_numbers.
-    - upper_case_letters (list): List of upper-case alphabetic characters extracted from the letter string.
-    - ascii_values_letters (list): List of ASCII code decimal values corresponding to upper_case_letters.
-    """
     # Separate numbers and letters
     number_string = ''.join([char for char in input_string if char.isdigit()])
     letter_string = ''.join([char for char in input_string if char.isalpha()])
@@ -44,18 +35,10 @@ print("ASCII Values of Even Numbers:", result[3])
 print("Upper-case Letters:", result[4])
 print("ASCII Values of Upper-case Letters:", result[5])
 
-
+"""
+Cryptogram
+"""
 def decrypt_cryptogram(cryptogram, shift):
-    """
-    Decrypts a given cryptogram using a Caesar cipher with the specified shift.
-
-    Parameters:
-    - cryptogram (str): The input encrypted text.
-    - shift (int): The Caesar cipher shift value.
-
-    Returns:
-    - decrypted_text (str): The decrypted text.
-    """
     decrypted_text = ''  # Initialize an empty string to store the decrypted result
     for char in cryptogram:
         if char.isalpha():  # Check if the character is alphabetic
@@ -72,15 +55,6 @@ def decrypt_cryptogram(cryptogram, shift):
 
 
 def find_shift_key(cryptogram):
-    """
-    Tries all possible shift values to find the original quote.
-
-    Parameters:
-    - cryptogram (str): The input encrypted text.
-
-    Prints:
-    - Decrypted text for each shift value.
-    """
     for shift in range(1, 26):  # Iterate through shift values from 1 to 25
         decrypted_text = decrypt_cryptogram(cryptogram, shift)
         print(f"Shift {shift}: {decrypted_text}")

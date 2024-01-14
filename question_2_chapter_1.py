@@ -1,3 +1,8 @@
+"""
+QUESTION 2 Chapter 1
+
+Link to git: 
+"""
 import time
 from PIL import Image
 

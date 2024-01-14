@@ -1,3 +1,8 @@
+"""
+QUESTION 1 Task 3_2
+
+Link to git: 
+"""
 from transformers import AutoTokenizer
 from collections import Counter
 import pandas as pd
