@@ -2,7 +2,7 @@
 """
 QUESTION 3
 
-Link to git: 
+Link to git: https://github.com/chien-kieu/hit137-group-assignment-2/blob/main/question_3.py
 """
 def finding_decryption_key():
     total = 0
