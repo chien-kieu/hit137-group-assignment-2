@@ -1,7 +1,7 @@
 """
 QUESTION 1 Task 4
 
-Link to git: 
+Link to git: https://github.com/chien-kieu/hit137-group-assignment-2/edit/main/question_1_task_4.py
 """
 import spacy
 from transformers import AutoModelForTokenClassification, AutoTokenizer, pipeline
