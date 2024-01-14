@@ -1,7 +1,15 @@
 
-def finding_key():
-    total = 0
+"""
+QUESTION 3: Fixing the error-prone codes
+1. Find the key by call finding_decryption_key()
+2. Write the decryption function decrypt(encrypted_text, key)
+3. Decrypt the original code (encrypted_code.text) and save to 'decrypted_code.py' file
+4. Correct the errors and provide the comments
 
+Link to git: 
+"""
+def finding_decryption_key():
+    total = 0
     for i in range(5):
         for j in range(3):
             if i + j == 5:
@@ -17,7 +25,6 @@ def finding_key():
             total -= 1
         else:
             counter += 2
-
     return total
 
 def encrypt(text, key):
@@ -57,19 +64,19 @@ def decrypt(encrypted_text, key):
     return decrypted_text
 
 # Read encrypted content from a text file
-encrypted_file_path = '/Users/chienkieu/Desktop/CDU/SS23/HIT137/Assignment_2/hit137-group-assignment-2/encrypted_code.text'
+encrypted_file_path = 'encrypted_code.text'
 with open(encrypted_file_path, 'r') as file:
     encrypted_content = file.read()
     print('Encrypted_content: \n', encrypted_content, '\n')
 
 # Specify the decryption key
-decryption_key = finding_key()
+decryption_key = finding_decryption_key()
 
 # Decrypt the content
 decrypted_content = decrypt(encrypted_content, decryption_key)
 
 # Write decrypted content to a Python file
-ouotput_file_path = '/Users/chienkieu/Desktop/CDU/SS23/HIT137/Assignment_2/hit137-group-assignment-2/decrypted_code.py'
+ouotput_file_path = 'decrypted_code.py'
 with open(ouotput_file_path, 'w') as file:
     file.write(decrypted_content)
     print('Decrypted_content: \n', decrypted_content)
